@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.7)
+project( imgCrypt )
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+add_executable( imgCrypt imgCrypt.cpp )
+target_link_libraries( imgCrypt ${OpenCV_LIBS} )
