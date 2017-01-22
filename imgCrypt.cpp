@@ -94,7 +94,7 @@ int main( int argc, char* argv[])
             return -1;
         }
 
-        ifstream file(argv[3]);
+        ifstream file(argv[3], std::ios::binary);
         if (!file.is_open())
         {
             cerr << "Unable to open file";
@@ -149,7 +149,7 @@ Mat& Encrypt(Mat& I, ifstream& file)
             if(!tock)
             {
                 file.get(c);
-                if(!c)
+                if(file.eof())
                     stopN = true;
             }
             else 
@@ -197,7 +197,7 @@ void Decrypt(Mat& I)
             {
                 c = info << 4 | c;
                 cout << c;
-                if(!c)
+                if(c == -1)
                     stop = true;
                 c = 0;
             }
